@@ -1,0 +1,224 @@
+/* Portfolio chapters */
+.folio-chapter, .folio-ledger {
+  color: var(--ink);
+  background: var(--bg);
+  font-family: var(--display, Arial, sans-serif);
+}
+.folio-bound {
+  width: min(100%, var(--page-max,112rem));
+  margin-inline: auto;
+  padding-inline: var(--margin,4.25vw);
+}
+.folio-chapter { padding: clamp(4.5rem, 8vw, 9rem) 0 0; }
+.folio-chapter .folio-heading { margin: 0; }
+.folio-kicker, .folio-label, .folio-tabs, .folio-credit, .folio-map-note, .folio-project > span,
+.folio-project small, .folio-control output, .folio-map button, .folio-dialog-bar button, .lightbox-bottom button,
+.folio-map-actions, .folio-pager, .folio-thumbs, .folio-map-legend, .folio-tooltip, .folio-textlink small {
+  font-family: var(--mono, monospace);
+}
+.folio-kicker, .folio-label {
+  text-transform: uppercase; font-size: .8125rem; line-height: 1.4; letter-spacing: .065em; font-weight: 500;
+}
+.folio-kicker {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  border-top: 1px solid var(--line); padding: 1rem 0; color: var(--muted);
+}
+.folio-kicker > :first-child { color: var(--ink); }
+.folio-heading {
+  display: grid; grid-template-columns: 1.55fr minmax(0, .78fr); gap: clamp(2rem, 6vw, 7rem);
+  align-items: end; padding: clamp(2.125rem, 5vw, 5.5rem) 0 clamp(2.5rem, 4.5vw, 5rem);
+}
+.folio-heading h2 {
+  font-family: var(--display, Arial, sans-serif); font-size: clamp(3.35rem, 6.8vw, 8.2rem);
+  font-weight: 800; letter-spacing: -.075em; line-height: .88; margin: 0;
+}
+.folio-heading h2 span, .folio-stats dd span { color: var(--accent); }
+.folio-heading p { max-width: 37ch; font-size: clamp(1.0625rem, 1.4vw, 1.5rem); line-height: 1.45; letter-spacing: -.025em; margin: 0; }
+.folio-label { color: var(--muted); }
+.folio-gallery-tools, .folio-map-tools, .folio-index-tools {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 2rem;
+  padding: .7rem 0; border-block: 1px solid var(--line);
+}
+.folio-tabs, .folio-map-actions, .folio-pager { display: flex; align-items: center; flex-wrap: wrap; gap: .3rem; }
+.folio-tabs button, .folio-pager button, .folio-map-actions button, .folio-dialog-bar button, .lightbox-bottom button, .folio-map-zoom button {
+  border: 1px solid var(--line); border-radius: 0; background: transparent; color: var(--ink);
+  font-size: .8125rem; line-height: 1.3; padding: .65rem .85rem; box-shadow: none;
+}
+.folio-tabs button { border-color: transparent; color: var(--muted); }
+.folio-tabs button[aria-pressed=true] { border-color: #568471; color: #c3e9d4; background: #15271e; }
+.folio-tabs button:hover, .folio-pager button:hover, .folio-map-actions button:hover, .folio-dialog-bar button:hover,
+.lightbox-bottom button:hover, .folio-map-zoom button:hover { border-color: var(--accent); color: var(--ink); }
+.folio-gallery-body { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0,.85fr); border-bottom: 1px solid var(--line); }
+.folio-image { position: relative; display: grid; place-items: center; min-width: 0; width: 100%; padding: 0; border: 0; border-radius: 0; background: #141916; cursor: zoom-in; }
+.folio-image img { display: block; width: 100%; aspect-ratio: 1.2; height: auto; object-fit: contain; max-height: 39rem; }
+.folio-image > span { position: absolute; bottom: 1rem; right: 1rem; color: #f0f3ed; background: #101511; padding: .6rem .8rem; font: .8125rem var(--mono, monospace); }
+.folio-plate { display: flex; min-width: 0; flex-direction: column; align-items: start; justify-content: center; gap: 1.5rem; padding: clamp(1.5rem, 4vw, 4.5rem); }
+.folio-plate-caption .folio-label { color: var(--accent); font-variant-numeric: tabular-nums; }
+.folio-plate h3, .folio-methods h3 { font-family: var(--display, Arial, sans-serif); font-weight: 600; letter-spacing: -.045em; line-height: 1.1; }
+.folio-plate h3 { font-size: clamp(1.65rem, 3vw, 3.1rem); margin: .85rem 0 .6rem; }
+.folio-plate p { margin: 0; }
+.folio-plate-caption p, .folio-disclosures p { max-width: 55ch; color: var(--muted); font-size: 1rem; line-height: 1.55; }
+.folio-thumbs { width: 100%; display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: .4rem; max-width: 22rem; }
+.folio-thumbs button { padding: 3px; border: 1px solid transparent; background: transparent; border-radius: 0; }
+.folio-thumbs img { display: block; width: 100%; aspect-ratio: 1.25; object-fit: cover; opacity: .68; }
+.folio-thumbs button[aria-pressed=true], .folio-thumbs button:hover { border-color: var(--accent); }
+.folio-thumbs button[aria-pressed=true] img, .folio-thumbs button:hover img { opacity: 1; }
+.folio-credit, .folio-map-note { font-size: .8125rem; line-height: 1.55; color: var(--muted); }
+.folio-methods { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.15fr); gap: 2rem; margin-top: clamp(2.5rem, 5vw, 5rem); }
+.folio-methods h3 { font-size: clamp(1.5rem, 2.5vw, 2.6rem); margin: .65rem 0; }
+.folio-disclosures { border-top: 1px solid var(--line); }
+.folio-disclosures details { border: 0; border-bottom: 1px solid var(--line); background: transparent; padding: 0; }
+.folio-disclosures summary {
+  position: relative; display: flex; justify-content: start; align-items: baseline; gap: .65rem;
+  list-style: none; font: 500 clamp(1.05rem,1.6vw,1.4rem)/1.3 var(--display, Arial, sans-serif); letter-spacing: -.025em;
+  padding: 1.15rem 2rem 1.15rem 0; color: var(--ink);
+}
+.folio-disclosures summary::-webkit-details-marker { display: none; }
+.folio-disclosures summary::after { content: '+'; position: absolute; right: 0; top: 1rem; font: 1.45rem var(--mono,monospace); color: var(--accent); }
+.folio-disclosures details[open] > summary::after { content: '−'; }
+.folio-disclosures summary small { font: .8125rem var(--mono,monospace); color: var(--muted); white-space: nowrap; margin-left: auto; }
+.folio-disclosures details p { margin: 0 1.5rem 1.1rem 0; }
+.folio-disclosures a, .folio-textlink { color: var(--ink); text-decoration: underline; text-underline-offset: .3em; text-decoration-thickness: 1px; }
+.folio-disclosures a:hover, .folio-textlink:hover { color: var(--accent); }
+.folio-map-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(17rem, .38fr); border-bottom: 1px solid var(--line); }
+.folio-map { position: relative; min-height: 29rem; background: #111813; }
+.folio-map canvas { display: block; position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; }
+.folio-map-legend, .folio-tooltip { position: absolute; padding: .65rem .8rem; pointer-events: none; font-size: .8125rem; line-height: 1.4; background: #101813; color: #d4e8da; border: 1px solid #455e4d; }
+.folio-map-legend { top: 1rem; left: 1rem; }
+.folio-map-zoom { display: flex; position: absolute; bottom: 1rem; right: 1rem; gap: .25rem; }
+.folio-map-zoom button { background: #101813; color: #eceee9; border-color: #526357; min-width: 2.5rem; }
+.folio-map-settings { display: flex; flex-direction: column; justify-content: center; gap: 1rem; padding: clamp(1.4rem, 3vw, 3rem); min-width: 0; }
+.folio-map-settings p { font-size: 1rem; line-height: 1.5; margin: 0; }
+.folio-map-settings .folio-control { display: flex; align-items: center; justify-content: space-between; font-size: .9375rem; }
+.folio-map-settings input { accent-color: var(--accent); width: 100%; }
+.folio-inspect { display: grid; gap: .55rem; border-block: 1px solid var(--line); padding: 1rem 0; }
+.folio-inspect small { color: var(--muted); font: .8125rem/1.45 var(--mono, monospace); }
+.folio-map-note { margin: .75rem 0 0; }
+.folio-project-list { border-bottom: 1px solid var(--line); }
+.folio-project {
+  display: grid; grid-template-columns: 1fr 2.1fr 1fr auto; align-items: baseline; gap: 1rem;
+  width: 100%; padding: clamp(1.3rem, 2.4vw, 2.7rem) 0; border: 0; border-radius: 0; text-align: left;
+  color: var(--ink); background: transparent;
+}
+.folio-project + .folio-project { border-top: 1px solid var(--line); }
+.folio-project[hidden], .folio-tooltip[hidden] { display: none; }
+.folio-project > span, .folio-project small { color: var(--muted); font-size: .8125rem; line-height: 1.5; }
+.folio-project strong { font-size: clamp(1.35rem, 2.9vw, 3.3rem); line-height: 1.1; letter-spacing: -.05em; font-weight: 500; }
+.folio-project i { font: 400 1.6rem/1 var(--mono,monospace); color: var(--accent); font-style: normal; }
+.folio-project:hover strong { color: var(--accent); }
+.folio-heading .folio-textlink { display: inline-block; margin-top: 1.2rem; font-size: 1.125rem; }
+.folio-textlink small { font-size: .75rem; }
+.folio-ledger { margin-top: clamp(4.5rem, 8vw, 9rem); }
+.folio-ledger h2 { padding-top: 1rem; margin: 0; border-top: 1px solid var(--line); font-family: var(--mono,monospace); color: var(--ink); }
+.folio-stats { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 2rem; margin: 2.5rem 0 0; }
+.folio-stats > div { display: flex; flex-direction: column-reverse; gap: .5rem; justify-content: end; border-inline-start: 1px solid var(--line); padding-inline-start: 1.4rem; }
+.folio-stats > div:first-child { padding-left: 0; border-left: 0; }
+.folio-stats dt { color: var(--muted); font-size: 1rem; line-height: 1.4; }
+.folio-stats dd { margin: 0; font-weight: 500; font-size: clamp(3.6rem, 6.2vw, 7.5rem); line-height: .95; letter-spacing: -.075em; }
+.folio-stats dd span { font-size: .65em; vertical-align: top; font-weight: 400; }
+.folio-contact .folio-heading { padding-bottom: clamp(4rem, 8vw, 9rem); }
+.folio-contact-links { display: flex; flex-direction: column; align-items: start; gap: .7rem; }
+.folio-contact-links .folio-textlink { margin: 0; font-size: clamp(1.05rem,1.5vw,1.7rem); overflow-wrap: anywhere; }
+dialog.folio-dialog, #imageDialog.folio-dialog {
+  color: var(--ink); background: var(--bg); border: 1px solid #59615b; border-radius: 0;
+  box-shadow: none; font-family: var(--display,Arial,sans-serif); max-height: 92dvh;
+}
+#projectDialog.folio-dialog { width: min(36rem,calc(100vw - 2rem)); padding: clamp(1rem, 3vw, 2.5rem); }
+#projectDialog.folio-dialog::backdrop, #imageDialog.folio-dialog::backdrop { background: #090c0ae8; backdrop-filter: none; }
+.folio-dialog-bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.4rem; }
+#projectDialog.folio-dialog h2 { font: 650 clamp(1.8rem, 4vw, 3.2rem)/1 var(--display,Arial,sans-serif); letter-spacing: -.06em; margin: 0 0 1rem; }
+#projectDialog.folio-dialog p, #projectDialog.folio-dialog li { color: var(--ink); font-size: 1rem; line-height: 1.55; }
+#projectDialog.folio-dialog .folio-access { padding: .9rem 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .875rem; }
+#imageDialog.folio-dialog { width: min(70rem,calc(100vw - 2rem)); height: min(52rem,92dvh); }
+#imageDialog .folio-dialog-bar { margin: 0; padding: .8rem 1rem; }
+#imageDialog .lightbox-bottom p { color: var(--muted); font-size: .875rem; line-height: 1.4; }
+body:has(.folio-dialog[open]) { overflow: hidden; }
+@media(max-width: 52rem) {
+  .folio-gallery-body { grid-template-columns: 1.05fr 1fr; }
+  .folio-plate { padding: 1.4rem; gap: 1rem; }
+  .folio-map-grid { grid-template-columns: 1fr; }
+  .folio-map { min-height: 24rem; }
+  .folio-map-settings { display: grid; grid-template-columns: 1fr 1fr; align-items: start; align-content: start; gap: 1.15rem 2rem; padding: 1.5rem 0; }
+  .folio-map-settings > p:first-child, .folio-map-settings > .folio-map-actions { grid-column: 1 / -1; }
+  .folio-inspect { grid-column: 1 / -1; }
+  .folio-project { grid-template-columns: .85fr 1.5fr 1fr auto; }
+}
+@media(max-width: 40rem) {
+  .folio-chapter { padding-top: 4.5rem; }
+  .folio-kicker { flex-wrap: wrap; gap: .35rem 1rem; font-size: .75rem; }
+  .folio-heading, .folio-methods, .folio-gallery-body { grid-template-columns: 1fr; }
+  .folio-heading { gap: 1.5rem; padding: 2.5rem 0 2rem; }
+  .folio-heading h2 { font-size: clamp(3.45rem, 13.3vw, 5.4rem); }
+  .folio-heading p { max-width: 42ch; }
+  .folio-gallery-tools, .folio-map-tools, .folio-index-tools { align-items: start; flex-direction: column; gap: .5rem; }
+  .folio-tabs button { padding: .6rem .65rem; }
+  .folio-plate { padding: 1.5rem 0; }
+  .folio-image img { max-height: 28rem; }
+  .folio-thumbs { max-width: 24rem; }
+  .folio-methods { gap: 1rem; }
+  .folio-map { min-height: 22rem; }
+  .folio-map-settings { display: flex; gap: 1rem; }
+  .folio-map-settings .folio-control, .folio-map-settings .folio-inspect { width: 100%; }
+  .folio-project { grid-template-columns: 1fr auto; gap: .35rem .75rem; }
+  .folio-project > span, .folio-project strong, .folio-project small { grid-column: 1; }
+  .folio-project i { grid-column: 2; grid-row: 1 / 4; align-self: center; }
+  .folio-project strong { font-size: 1.65rem; }
+  .folio-disclosures summary { font-size: 1.0625rem; }
+  .folio-stats { gap: 0; grid-template-columns: 1fr; margin-top: 1.4rem; }
+  .folio-stats > div, .folio-stats > div:first-child { padding: 1rem 0; border: 0; border-bottom: 1px solid var(--line); flex-direction: row; justify-content: space-between; align-items: center; }
+  .folio-stats dd { font-size: 3rem; }
+  #imageDialog .lightbox-bottom { gap: .5rem; padding: .75rem; }
+  #imageDialog .lightbox-bottom button { padding: .55rem; }
+}
+@media(prefers-reduced-motion: reduce) {
+  .folio-dialog[open], #imageDialog.folio-dialog[open] { animation: none; }
+}
+.folio-process { position: relative; margin: 0 0 clamp(2.2rem, 5vw, 5rem); }
+.folio-process-pin { background: var(--bg); }
+.folio-process-bar {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .65rem 1rem;
+  border-top: 1px solid var(--line); padding: .75rem 0;
+}
+.folio-process-bar h3 { font: 500 .8125rem/1.4 var(--mono,monospace); margin: 0; }
+.folio-process-controls { display: flex; align-items: center; gap: .9rem; font: .8125rem/1.3 var(--mono,monospace); font-variant-numeric: tabular-nums; }
+.folio-process-controls[hidden] { display: none; }
+.folio-process-controls span { color: var(--muted); }
+.folio-process-controls button { padding: .55rem .1rem; color: var(--ink); background: transparent; font: inherit; }
+.folio-process-controls button:hover { color: var(--accent); }
+.folio-process-controls button[aria-disabled=true] { color: var(--muted); opacity: .65; cursor: default; }
+.folio-film {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 68%); gap: clamp(.8rem, 1.8vw, 1.75rem);
+  align-items: stretch; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory;
+  scrollbar-color: var(--line) var(--bg); scrollbar-width: thin; direction: ltr;
+}
+.folio-film figure { display: flex; flex-direction: column; min-width: 0; margin: 0; scroll-snap-align: start; background: transparent; }
+.folio-film-image { position: relative; background: #171d18; }
+.folio-film-image img { width: 100%; height: clamp(13rem,42svh,29rem); display: block; object-fit: contain; }
+.folio-film figcaption { display: flex; align-items: baseline; flex-wrap: wrap; gap: .35rem .9rem; margin: 0; padding: .9rem 0 1rem; }
+.folio-film figcaption span { color: var(--muted); text-transform: uppercase; font: .8125rem/1.35 var(--mono,monospace); letter-spacing: .04em; }
+.folio-film figcaption strong { font-size: clamp(1.1rem,1.6vw,1.65rem); line-height: 1.15; color: var(--ink); letter-spacing: -.035em; font-weight: 550; }
+.folio-film-progress { height: 2px; background: var(--line); }
+.folio-film-progress span { display: block; width: 100%; height: 100%; transform: scaleX(var(--film-progress,.333333)); transform-origin: left; background: var(--accent); }
+.folio-process.is-driven::after { content: ''; display: block; height: clamp(17rem, 49vh, 30rem); }
+.folio-process.is-driven .folio-process-pin { position: sticky; top: var(--nav-height,5rem); }
+.folio-process.is-driven .folio-film { scroll-snap-type: none; scrollbar-width: none; }
+.folio-process.is-driven .folio-film::-webkit-scrollbar { display: none; }
+.folio-heading h2 { min-width: 0; }
+.folio-heading h2 .folio-title-line {
+  display: block; color: inherit; overflow: clip;
+  /* Allow for Archivo's cap height and punctuation at the tight display leading. */
+  padding: .065em .045em .07em; margin: -.065em -.045em -.07em;
+}
+.folio-heading h2 .folio-title-ink { display: block; color: inherit; }
+@media(max-width:40rem) {
+  .folio-film { grid-auto-columns: 87%; }
+  .folio-film-image img { height: clamp(12rem,62vw,19rem); }
+  .folio-film figcaption { display: grid; }
+  .folio-process-controls { gap: .55rem; }
+}
+@media(prefers-reduced-motion: no-preference) {
+  :root:not([data-motion=paused]) .folio-heading h2 .folio-title-ink {
+    transform: translate3d(var(--line-x, 0em), var(--line-y, 0%), 0);
+    color: color-mix(in srgb, #b4f88a var(--line-tint, 0%), var(--ink));
+  }
+}

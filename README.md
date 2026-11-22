@@ -1,45 +1,30 @@
-# felixpete69.github.io
+# Terrain to Tangible
 
-Personal portfolio for Feng Qi, featuring spatial design, GIS and data-science work.
+Feng Qi’s portfolio of GIS, three-dimensional cartography and digital fabrication.
 
-**Website:** https://felixpete69.github.io/
+## Explore the site
 
-## Featured work
+The cover uses elevation data from Zijin Mountain in Nanjing. Switch between **Orbit**, **Connect** and **Flow**, or move the pointer across the mountain. The motion control in the header pauses the experience. The site also respects the system’s reduced-motion preference.
 
-- **Nanjing Reimagined:** a graduation project on 3D relief mapping, digital visualisation and physical 3D printing. The gallery contains 17 original figures and model photographs, grouped into citywide maps, district studies and printed outputs.
-- **Spatial sandbox:** a synthetic, interactive city map with three layers, pan/zoom, point inspection, sample controls and PNG export.
-- **Course notebooks:** Quantitative Methods and Efficient Code project summaries. Repository links retain their existing access requirements.
+Choose **Explore the terrain** to enter the full-screen flight. Scroll to approach the ridge and see its mesh, choose a chapter, or use **Play fly-through** for an 18-second camera journey. The terrain is rendered locally from the same elevation grid as the cover.
 
-## Interaction and accessibility
+Mouse-wheel movement eases to a stop and responds immediately to a change in direction. The two cover lines lean with scroll speed, and the flight and project headings reveal line by line as you move through them. Touch scrolling follows the device’s own momentum. **Motion off** restores native wheel scrolling and displays the headings at rest.
 
-- GSAP 3.15.0 title entrances, terrain-card parallax and desktop scroll-driven exhibition.
-- Desktop pointer tilt and magnetic links; touch devices use native horizontal swipe.
-- Bold editorial typography with deep navy, purple, red and white.
-- Selected CV experience in expandable rows, with an original PDF link.
+The Nanjing graduation project includes a scroll-through process study, 17 original project images and an accessible full-size viewer. The spatial sandbox supports three map layers, keyboard navigation, point inspection and PNG export. Its coordinates are synthetic. The profile includes a downloadable CV and selected experience.
 
-- Three animated hero modes: Orbit, Connect and Flow.
-- Project details and full-image dialogs with keyboard controls.
-- Gallery thumbnails, previous/next navigation and mobile swipe support.
-- Light/dark themes, global animation pause, map animation pause and system reduced-motion support.
-- Responsive layouts, visible keyboard focus and descriptive image text.
+## Preview
 
-## Local preview
-
-No build step or installation is required. From this folder:
+Open `index.html` in a browser, or serve this directory locally.
 
 ```sh
-python3 -m http.server 8765 --bind 127.0.0.1
+python -m http.server 8765 --bind 127.0.0.1
 ```
 
-Open http://127.0.0.1:8765/.
+The repository root is ready to serve on GitHub Pages. Fonts, scripts, project images and cover elevation data are included.
 
-- `index.html` — page content and structure
-- `styles.css` — deep navy, purple, red and white design
-- `app.js` — canvas rendering and browser interactions
-- `editorial.css` — exhibition layout and responsive compositions
-- `motion.js` — GSAP choreography and reduced-motion cleanup
-- `assets/vendor/` — local animation dependencies and [notices](assets/vendor/NOTICE.md)
-- `assets/Feng_Qi_Geospatial_CV.pdf` — original CV supplied by Feng Qi
-- `assets/nanjing/` — original project figures and [image credits](assets/nanjing/credits.md)
+## Credits
 
-The map sandbox uses generated coordinates and is an illustrative experiment. It is separate from the thesis maps, which are original project outputs.
+- [Nanjing project image provenance](assets/nanjing/credits.md)
+- [Mapzen Terrain Tiles](https://registry.opendata.aws/terrain-tiles/) for the cover relief. Elevations are exaggerated for display.
+- [GSAP notices](assets/vendor/NOTICE.md)
+- [Archivo license](assets/fonts/archivo-OFL.txt) and [IBM Plex Mono license](assets/fonts/ibm-plex-mono-OFL.txt)

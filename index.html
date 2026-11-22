@@ -1,52 +1,286 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Feng Qi — GIS, 3D cartography and urban spatial science. Explore Nanjing in digital and physical form, selected work and interactive spatial experiments.">
-<meta name="theme-color" content="#f9faff"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23122047' d='M16 1 31 16 16 31 1 16z'/%3E%3Cpath fill='%23e53b58' d='m16 10 6 6-6 6-6-6z'/%3E%3C/svg%3E"><title>Feng Qi — Terrain to tangible</title>
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="editorial.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore Feng Qi’s geospatial portfolio, from the terrain of Nanjing to three-dimensional maps, interactive spatial studies and printed objects.">
+  <meta name="theme-color" content="#0b0e0c">
+  <title>Feng Qi — Terrain to Tangible</title>
+  <link rel="icon" href="assets/relief-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="chapters.css">
+  <link rel="stylesheet" href="flight.css">
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="navigation.js" defer></script>
+  <script src="cover-motion.js" defer></script>
+  <script src="wheel-motion.js" defer></script>
+  <script src="assets/zijin-points.js" defer></script>
+  <script src="terrain.js" defer></script>
+  <script src="flight-render.js" defer></script>
+  <script src="flight.js" defer></script>
+  <script src="chapters-motion.js" defer></script>
+  <script src="app.js" defer></script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<div class="scroll-progress" aria-hidden="true"></div>
-<header><div class="wrap nav"><a class="wordmark" href="#" aria-label="Feng Qi home"><span class="mark" aria-hidden="true"></span>FENG QI<span style="color:var(--accent)">.</span></a><nav aria-label="Main navigation"><a href="#thesis">Work</a><a href="#lab">Playground</a><a class="nav-about" href="#journey">About</a><button class="motion-control" id="globalMotion" aria-label="Pause all animations" aria-pressed="false"><span aria-hidden="true">Ⅱ</span><span class="motion-text">Motion on</span></button><button class="iconbtn" id="theme" aria-label="Switch to dark theme">◐</button></nav></div></header>
-<main id="main" class="wrap">
-<section class="hero editorial-hero" aria-labelledby="heroTitle">
-<div class="hero-topline mono"><span>Feng Qi · Spatial designer & GIS practitioner</span><span>Based in the UK / UCL CASA</span></div>
-<div class="hero-composition">
-<h1 id="heroTitle"><span class="title-line"><span>TERRAIN</span></span><span class="title-line title-to"><span>TO</span></span><span class="title-line title-tangible"><span>TANGIBLE<span class="title-stop">.</span></span></span></h1>
-<div class="terrain-stage" id="heroScene" aria-label="Original Nanjing terrain maps by Feng Qi"><canvas id="constellation" aria-hidden="true"></canvas><div class="terrain-orbits" aria-hidden="true"><i></i><i></i><i></i></div><div class="terrain-stack"><div class="terrain-layer layer-back"><img src="assets/nanjing/urban-artistic.jpg" width="977" height="977" alt="" fetchpriority="high"></div><div class="terrain-layer layer-front"><img src="assets/nanjing/nanjing-topography.jpg" width="977" height="977" alt="Nanjing 3D topographic landscape map by Feng Qi" fetchpriority="high"></div><div class="terrain-label mono">NANJING / 32.06° N, 118.80° E</div></div></div>
-<a class="hero-disc magnetic" href="#thesis" aria-label="Explore the Nanjing graduation project"><span>Explore<br>the work</span><b aria-hidden="true">↘</b></a>
-</div><div class="hero-baseline"><p>Geography, given another dimension.</p><div class="scene-controls" role="group" aria-label="Hero animation style"><button class="active" data-scene="orbit" aria-pressed="true">01 Orbit</button><button data-scene="connect" aria-pressed="false">02 Connect</button><button data-scene="flow" aria-pressed="false">03 Flow</button></div><span class="mono">Scroll to discover ↓</span></div>
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="top"></div>
+  <header class="masthead">
+    <div class="page-width masthead-inner">
+      <a class="identity" href="#top" aria-label="Feng Qi, home">
+        <img src="assets/relief-mark.svg" alt="" width="34" height="34">
+        <span>Feng Qi<span class="name-dot">.</span></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-links" hidden>Menu <span aria-hidden="true"></span></button>
+      <nav class="primary-nav" id="primary-links" aria-label="Main navigation">
+        <a href="#thesis">Work</a>
+        <a href="#lab">Playground</a>
+        <a href="#journey">About</a>
+        <a class="contact-nav" href="#contact">Contact <svg viewBox="0 0 20 16" aria-hidden="true"><rect x="1.5" y="2" width="17" height="12"/><path d="m2 3 8 6 8-6"/></svg></a>
+      </nav>
+      <button class="global-motion" id="globalMotion" aria-pressed="false" aria-label="Pause all animations"><i class="motion-icon" aria-hidden="true"></i><span>Motion on</span></button>
+    </div>
+  </header>
+  <main id="main">
+    <section class="cover" aria-labelledby="cover-title">
+      <div class="page-width cover-plate">
+        <div class="cover-register" aria-hidden="true"><i></i><i></i><i></i></div>
+        <figure class="relief-figure">
+          <div class="relief-frame">
+            <span class="frame-corner corner-a" aria-hidden="true"></span>
+            <span class="frame-corner corner-b" aria-hidden="true"></span>
+            <span class="frame-corner corner-c" aria-hidden="true"></span>
+            <span class="frame-corner corner-d" aria-hidden="true"></span>
+            <div class="frame-axis" aria-hidden="true"></div>
+            <img class="relief-image" src="assets/zijin-relief.webp" width="1420" height="938" fetchpriority="high" alt="A green point-cloud relief of the ridges of Zijin Mountain in Nanjing">
+          </div>
+          <figcaption class="terrain-foot">
+            <span class="terrain-modes" role="group" aria-label="Terrain animation mode">
+              <button type="button" data-mode="orbit" aria-pressed="true">Orbit</button>
+              <button type="button" data-mode="connect" aria-pressed="false">Connect</button>
+              <button type="button" data-mode="flow" aria-pressed="false">Flow</button>
+            </span>
+            <span class="relief-caption">
+            <svg viewBox="0 0 23 23" fill="none" aria-hidden="true"><path d="M11.5 0v7m0 9v7M0 11.5h7m9 0h7"/><circle cx="11.5" cy="11.5" r="6.5"/><circle cx="11.5" cy="11.5" r="1" fill="currentColor"/></svg>
+            <span><b>Zijin Mountain <em>/</em> Nanjing</b><small>32.068° N, 118.848° E</small></span>
+            </span>
+          </figcaption>
+        </figure>
+        <div class="cover-copy">
+          <p class="cover-kicker"><span aria-hidden="true"></span> Geospatial portfolio <b>/</b> 2026</p>
+          <h1 id="cover-title" aria-label="#Terrain #Tangible">
+            <span class="cover-line" aria-hidden="true"><i>#</i><span class="cover-word">TERRAIN</span></span>
+            <span class="cover-line second-line" aria-hidden="true"><i>#</i><span class="cover-word">TANGIBLE</span></span>
+          </h1>
+          <div class="cover-intro">
+            <p>I turn geographic data into three-dimensional<br class="desktop-break"> maps and objects you can hold.</p>
+            <a class="work-link" href="#flight"><span class="grid-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Explore the terrain</a>
+          </div>
+        </div>
+      </div>
+      <div class="page-width cover-base">
+        <div class="discipline-roll" aria-label="GIS, 3D cartography, digital fabrication and spatial analysis"><div class="discipline-strip" aria-hidden="true">
+          <span class="base-field">GIS <i>✳</i> 3D Cartography <i>✳</i> Digital fabrication <i>✳</i> Spatial analysis <i>✳</i></span>
+          <span class="base-field">GIS <i>✳</i> 3D Cartography <i>✳</i> Digital fabrication <i>✳</i> Spatial analysis <i>✳</i></span>
+        </div></div>
+        <a class="scroll-link" href="#flight"><span class="scroll-track" aria-hidden="true"></span> Scroll to explore</a>
+      </div>
+    </section>
+    <section class="flight" id="flight" aria-label="Zijin Mountain terrain fly-through">
+      <div class="flight-stage">
+        <div class="flight-landscape" aria-hidden="true"></div>
+        <canvas class="flight-canvas" aria-hidden="true"></canvas>
+        <div class="flight-shade" aria-hidden="true"></div>
+        <div class="page-width flight-inner">
+          <div class="flight-bar"><span>Zijin Mountain <i>/</i> Nanjing</span><a href="#thesis">Skip to project</a></div>
+          <div class="flight-story">
+            <div class="flight-scene is-current">
+              <h2><span>ALONG THE</span><span>RIDGELINE</span></h2>
+              <p>From above, a ridge looks like a line. From within the landscape, it becomes a horizon.</p>
+            </div>
+            <div class="flight-scene" aria-hidden="true">
+              <h2><span>READ THE</span><span>SURFACE</span></h2>
+              <p>Light catches the slopes of Zijin Mountain. Each shift in tone reveals a change in elevation.</p>
+            </div>
+            <div class="flight-scene" aria-hidden="true">
+              <h2><span>LAND INTO</span><span>LINEWORK</span></h2>
+              <p>The surface opens into a mesh. Each vertex carries a height, giving the landscape its digital form.</p>
+            </div>
+          </div>
+          <div class="flight-toolbar" hidden>
+            <div class="flight-steps" role="group" aria-label="Choose fly-through chapter">
+              <button type="button" data-flight-step="0" aria-pressed="true">Ridgeline</button>
+              <button type="button" data-flight-step="1" aria-pressed="false">Surface</button>
+              <button type="button" data-flight-step="2" aria-pressed="false">Linework</button>
+            </div>
+            <button class="flight-play" type="button" aria-pressed="false"><i aria-hidden="true"></i><span>Play fly-through</span></button>
+          </div>
+        </div>
+        <div class="flight-progress" aria-hidden="true"></div>
+      </div>
+    </section>
+
+<section class="folio-chapter" id="thesis" aria-labelledby="thesis-heading">
+  <div class="folio-bound">
+    <div class="folio-kicker"><span>Selected work</span><span>Graduation project · 2026</span></div>
+    <div class="folio-heading">
+      <h2 id="thesis-heading">NANJING<br>IN RELIEF<span>.</span></h2>
+      <p>How do you hold a city in your hands? In Nanjing, I used elevation data, satellite imagery and building footprints to turn a map into a physical model.</p>
+    </div>
+    <div class="folio-process" aria-labelledby="process-title">
+      <div class="folio-process-pin">
+        <div class="folio-process-bar">
+          <h3 id="process-title" class="folio-label">From terrain to model</h3>
+          <div class="folio-process-controls" hidden>
+            <button type="button" data-process-step="-1" aria-label="Previous process image">Previous</button>
+            <span id="process-count" aria-live="off">01 / 03</span>
+            <button type="button" data-process-step="1" aria-label="Next process image">Next</button>
+          </div>
+        </div>
+        <div class="folio-film" tabindex="0" role="region" aria-label="Three stages of the Nanjing project. Scroll horizontally or use the left and right arrow keys.">
+          <figure><div class="folio-film-image"><img loading="lazy" src="assets/nanjing/nanjing-relief.jpg" width="977" height="977" alt="Nanjing’s hills and waterways rendered from satellite imagery and a digital elevation model"></div><figcaption><span>Terrain</span><strong>Read the landscape.</strong></figcaption></figure>
+          <figure><div class="folio-film-image"><img loading="lazy" src="assets/nanjing/urban-artistic.jpg" width="977" height="977" alt="Three-dimensional buildings and terrain over an illustrated map of Nanjing"></div><figcaption><span>Urban form</span><strong>Build the digital city.</strong></figcaption></figure>
+          <figure><div class="folio-film-image"><img loading="lazy" src="assets/nanjing/printed-buildings.jpg" alt="A photograph of Feng Qi’s physical 3D-printed Nanjing building model"></div><figcaption><span>Fabrication</span><strong>Give the map a surface.</strong></figcaption></figure>
+        </div>
+        <div class="folio-film-progress" aria-hidden="true"><span></span></div>
+      </div>
+    </div>
+    <div class="folio-gallery">
+      <div class="folio-gallery-tools">
+        <span class="folio-label">Image collection</span>
+        <div class="folio-tabs" role="group" aria-label="Choose image collection">
+          <button data-gallery="city" aria-pressed="true">Citywide</button>
+          <button data-gallery="district" aria-pressed="false">Districts</button>
+          <button data-gallery="print" aria-pressed="false">3D prints</button>
+        </div>
+      </div>
+      <div class="folio-gallery-body">
+        <button class="folio-image" id="openGallery" type="button" aria-label="Open selected project image at full size">
+          <img id="galleryMain" src="assets/nanjing/nanjing-relief.jpg" width="977" height="977" loading="lazy" alt="Nanjing citywide relief map">
+          <span>Full image</span>
+        </button>
+        <div class="folio-plate">
+          <div class="folio-plate-caption" aria-live="polite" aria-atomic="true">
+            <span class="folio-label" id="galleryCounter">01 / 04</span>
+            <h3 id="galleryTitle">Nanjing · the whole city</h3>
+            <p id="galleryCaption">Figure 15 · A citywide 3D map combining terrain and remote-sensing imagery.</p>
+          </div>
+          <div class="folio-pager"><button id="galleryPrev" aria-label="Previous project image">Previous</button><button id="galleryNext" aria-label="Next project image">Next</button></div>
+          <div id="galleryThumbs" class="folio-thumbs" role="group" aria-label="Project image thumbnails"></div>
+          <p class="folio-credit">Maps and model photographs by Feng Qi.<br>NUIST Reading Academy, 2026.</p>
+        </div>
+      </div>
+    </div>
+    <div class="folio-methods">
+      <h3>How it was made</h3>
+      <div class="folio-disclosures">
+        <details><summary>Prepare the geography</summary><p>I brought the elevation model, imagery and building footprints into a common coordinate system in QGIS before preparing the layers for modelling.</p></details>
+        <details><summary>Build the digital landscape</summary><p>In Blender, I built the terrain, extruded building footprints and adjusted the light and materials. The citywide and district views show how a change in scale affects what you can see.</p></details>
+        <details><summary>Make it printable</summary><p>I simplified and repaired the meshes so that thin structures would survive printing and changes in elevation could be read by touch.</p></details>
+        <details><summary>Data sources and image credits</summary><p>The figures come from my graduation project, <cite>Design and printing of 3D relief shading map in Nanjing</cite>. The terrain uses NASA SRTM and Copernicus DEM, with Sentinel-2 L2A imagery, <a href="https://www.openstreetmap.org/copyright" rel="noopener noreferrer" target="_blank">OpenStreetMap contributors</a> and the administrative and base maps credited in the thesis. Building heights are modelled. <a href="assets/nanjing/credits.md">Read the full image credits.</a></p><p>The cover relief depicts Zijin Mountain, Nanjing, using <a href="https://registry.opendata.aws/terrain-tiles/" target="_blank" rel="noopener noreferrer">Mapzen Terrain Tiles</a> with vertical exaggeration.</p></details>
+      </div>
+    </div>
+  </div>
 </section>
-<div class="marquee editorial-marquee" aria-hidden="true"><div class="marquee-track"><div class="marquee-group"><span>GIS</span><i>↗</i><span>3D CARTOGRAPHY</span><i>✳</i><span>URBAN DATA</span><i>↗</i><span>PHYSICAL FORM</span><i>✳</i></div><div class="marquee-group"><span>GIS</span><i>↗</i><span>3D CARTOGRAPHY</span><i>✳</i><span>URBAN DATA</span><i>↗</i><span>PHYSICAL FORM</span><i>✳</i></div></div></div>
-<section class="section thesis-section reveal" id="thesis"><div class="thesis-heading"><div><span class="mono muted">01 / Selected work · Graduation project 2026</span><h2 class="display-heading">NANJING<span class="heading-star" aria-hidden="true">✳</span><br><em>REIMAGINED.</em></h2></div><div class="thesis-intro"><span class="project-kind">A CITY. THREE WAYS TO SEE IT.</span><p>南京市三维地形晕渲图设计与打印</p><div class="tags"><span class="tag">QGIS</span><span class="tag">Blender</span><span class="tag">3D printing</span></div></div></div>
-<div class="visual-story" role="region" tabindex="0" aria-label="From terrain data to physical form. Scroll to explore, or swipe horizontally on touch screens."><div class="story-track">
-<figure class="story-panel"><div class="story-image"><img src="assets/nanjing/nanjing-relief.jpg" alt="Nanjing terrain with remote-sensing imagery" loading="lazy" width="977" height="977"></div><figcaption><span class="mono">01 / TERRAIN</span><strong>Read the landscape.</strong></figcaption></figure>
-<figure class="story-panel"><div class="story-image"><img src="assets/nanjing/urban-artistic.jpg" alt="Three-dimensional Nanjing buildings and terrain on a cartographic base" loading="lazy" width="977" height="977"></div><figcaption><span class="mono">02 / URBAN FORM</span><strong>Build another view.</strong></figcaption></figure>
-<figure class="story-panel"><div class="story-image"><img src="assets/nanjing/printed-buildings.jpg" alt="Feng Qi’s physical 3D-printed building model" loading="lazy"></div><figcaption><span class="mono">03 / PHYSICAL FORM</span><strong>Make it tangible.</strong></figcaption></figure>
-</div><div class="story-progress" aria-hidden="true"><span></span></div><div class="story-instruction mono">Scroll through the process ↗</div></div>
-<div class="gallery-heading"><span class="mono">THE COMPLETE SERIES</span><p>17 views. One city.</p><span class="mono">SELECT / EXPAND / EXPLORE ↘</span></div>
-<div class="thesis-gallery"><div class="gallery-stage"><button id="openGallery" aria-label="Open the selected project image at full size"><img id="galleryMain" src="assets/nanjing/nanjing-relief.jpg" width="977" height="977" alt="Nanjing citywide 3D relief map, created by Feng Qi" loading="lazy"><span class="image-expand">View full image ↗</span></button></div><div class="gallery-panel"><div class="gallery-tabs" role="group" aria-label="Choose project image collection"><button data-gallery="city" aria-pressed="true" class="active">Citywide</button><button data-gallery="district" aria-pressed="false">Districts</button><button data-gallery="print" aria-pressed="false">3D prints</button></div><div class="gallery-story"><span class="mono muted" id="galleryCounter">01 / 04</span><h3 id="galleryTitle">Nanjing · the whole city</h3><p id="galleryCaption">Figure 15 · A citywide 3D map combining terrain and remote-sensing imagery.</p><div class="gallery-arrows"><button id="galleryPrev" class="iconbtn" aria-label="Previous project image">←</button><button id="galleryNext" class="iconbtn" aria-label="Next project image">→</button><span class="mono muted">Explore the series</span></div></div><div id="galleryThumbs" class="gallery-thumbs" aria-label="Project image thumbnails"></div><p class="gallery-credit">Maps & model photographs by Feng Qi<br>NUIST · Reading Academy · Graduation project</p></div></div>
-<div class="thesis-details"><div><span class="mono muted">The question</span><p class="research-question">From pixels<br>to something<br><em>you can hold.</em></p></div><div class="workflow"><details><summary><span><span class="n">01</span>Prepare the geography</span><span class="plus" aria-hidden="true">+</span></summary><p>Bring digital elevation, imagery and building-footprint data into a common spatial reference in QGIS. Prepare the terrain and geographic layers for modelling.</p></details><details><summary><span><span class="n">02</span>Build the digital landscape</span><span class="plus" aria-hidden="true">+</span></summary><p>Use Blender to construct terrain, extrude building footprints and develop materials, lighting and shadows. Explore the city at both whole-city and district scales.</p></details><details><summary><span><span class="n">03</span>Make it printable</span><span class="plus" aria-hidden="true">+</span></summary><p>Simplify and repair meshes for a stable physical model. The printed result prioritises tactile readability and structural integrity, with less fine detail than the digital rendering.</p></details></div></div>
-<details class="thesis-sources"><summary>Project context & image credits <span class="plus" aria-hidden="true">+</span></summary><p>Selected figures from <cite>Design and printing of 3D relief shading map in Nanjing</cite>, Feng Qi, 2026. The project compares a digital visualisation workflow and a fabrication workflow using QGIS and Blender. Its maps are design and modelling outputs; rendering detail does not imply measured building-height accuracy.</p><p>Data sources described in the thesis include NASA SRTM, Sentinel-2 L2A, <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors</a>, and the credited administrative and base-map sources. The maps are shown in their original colours. <a href="assets/nanjing/credits.md">Image provenance ↗</a></p></details>
+
+<section class="folio-chapter" id="lab" aria-labelledby="lab-heading">
+  <div class="folio-bound">
+    <div class="folio-kicker"><span>Playground</span><span>Browser experiment</span></div>
+    <div class="folio-heading">
+      <h2 id="lab-heading">SPATIAL<br>SANDBOX<span>.</span></h2>
+      <p>Start with a set of invented places. View the same coordinates as points, clusters or connections, and watch the city read differently.</p>
+    </div>
+    <div class="folio-map-tools">
+      <span class="folio-label">Map layer</span>
+      <div class="folio-tabs" role="group" aria-label="Choose map layer">
+        <button data-layer="points" aria-pressed="true">Points</button>
+        <button data-layer="heat" aria-pressed="false">Density</button>
+        <button data-layer="network" aria-pressed="false">Connections</button>
+      </div>
+    </div>
+    <div class="folio-map-grid">
+      <div class="folio-map">
+        <canvas id="map" tabindex="0" aria-label="Interactive map of synthetic locations. Drag or use the arrow keys to pan, plus and minus to zoom, and zero to reset."></canvas>
+        <div id="pointTooltip" class="folio-tooltip" hidden></div>
+        <span class="folio-map-legend" id="legendText">Sample locations</span>
+        <div class="folio-map-zoom" role="group" aria-label="Map view"><button id="zoomOut" aria-label="Zoom out">−</button><button id="zoomIn" aria-label="Zoom in">+</button><button id="reset">Reset</button></div>
+      </div>
+      <aside class="folio-map-settings" aria-label="Map settings">
+        <p id="layerDescription">Each point is a synthetic location. Drag to pan or select a point to read its coordinates.</p>
+        <label class="folio-control" for="density">Sample size <output id="densityValue" for="density">80</output></label>
+        <input id="density" type="range" min="20" max="160" step="10" value="80">
+        <div class="folio-control">Map zoom <output id="zoomValue">1.0×</output></div>
+        <div class="folio-inspect">
+          <span class="folio-label">Location inspector</span>
+          <span id="selectedPoint">Select a point</span><small id="pointCoordinates">Synthetic coordinates</small>
+          <div class="folio-pager"><button id="previousPoint" aria-label="Inspect previous location">Previous</button><button id="nextPoint" aria-label="Inspect next location">Next</button></div>
+        </div>
+        <p id="mapStatus" class="sr" role="status"></p>
+        <div class="folio-map-actions"><button id="regenerate">New pattern</button><button id="exportMap">Save PNG</button><button id="motion" aria-pressed="false">Play motion</button></div>
+      </aside>
+    </div>
+    <p class="folio-map-note">Synthetic data generated in your browser. Keyboard controls: arrow keys to pan, + / − to zoom, 0 to reset.</p>
+  </div>
 </section>
-<section class="section reveal" id="lab"><span class="mono muted">02 — The interactive playground</span><div class="section-head"><h2 class="display-heading">PLAY WITH<br><em>PERSPECTIVE.</em></h2><p>Drag. Zoom. Connect the dots.</p></div><div class="lab"><div class="labbar"><span class="mono">Spatial sandbox / live</span><div class="pills" role="group" aria-label="Map layer"><button class="pill active" data-layer="points" aria-pressed="true">Points</button><button class="pill" data-layer="heat" aria-pressed="false">Density</button><button class="pill" data-layer="network" aria-pressed="false">Connections</button></div></div><div class="lab-grid"><div class="mapbox"><canvas id="map" tabindex="0" aria-label="Interactive synthetic city map. Drag to pan; use arrow keys to move, plus and minus to zoom, and zero to reset."></canvas><div id="pointTooltip" class="point-tooltip" role="status" hidden></div><span class="mapbadge mono">Illustrative city · synthetic data</span><span class="legend"><i></i><span id="legendText">Sample locations</span></span><div class="maptools"><button id="zoomIn" aria-label="Zoom in">+</button><button id="zoomOut" aria-label="Zoom out">−</button><button id="reset" aria-label="Reset map view">⌖</button></div></div><aside class="labside"><span class="mono muted">Make it your own</span><h3>Every dot is a place.</h3><p id="layerDescription">Explore sample locations across an imagined city. Drag the map to discover the pattern.</p><label class="range-label" for="density">Sample size <output id="densityValue" for="density">80</output></label><input type="range" id="density" min="20" max="160" step="10" value="80"><div class="readout" aria-live="polite"><div><strong id="count">80</strong><small>sample locations</small></div><div><strong id="zoomValue">1.0×</strong><small>map zoom</small></div></div><button id="regenerate" class="outline">↻ Generate a new pattern</button><div class="point-inspector" aria-live="polite"><span class="mono muted">Location inspector</span><strong id="selectedPoint">Pick a point on the map</strong><span id="pointCoordinates">Synthetic coordinates · no real location</span><div class="point-nav"><button id="previousPoint" aria-label="Inspect previous location">← Previous</button><button id="nextPoint" aria-label="Inspect next location">Next →</button></div></div><button id="exportMap" class="outline">↓ Save this map as PNG</button><button id="motion" class="outline" style="margin-top:8px" aria-pressed="false">Pause animation</button></aside></div><div class="labfoot">This is a browser-based demonstration, not a real city dataset or research result. Keyboard: arrows to pan · + / − to zoom · 0 to reset.</div></div></section>
-<section class="section reveal" id="projects"><span class="mono muted">03 — More explorations</span><div class="section-head"><h2 class="display-heading">SIDE<br><em>EXPLORATIONS.</em></h2><p>Small experiments. New possibilities.</p></div><div class="filters" role="group" aria-label="Filter projects"><button class="active" data-filter="all" aria-pressed="true">All work</button><button data-filter="course" aria-pressed="false">Coursework</button><button data-filter="experiment" aria-pressed="false">Experiments</button></div><div class="projects">
-<article class="project" data-category="course"><button class="project-visual project-open" data-project="quant" aria-label="Read about the Quantitative Methods notebooks"><div class="stat-art" aria-hidden="true"><div class="stat-axis"></div><div class="stat-bars"><i style="--bar:12%;--delay:0ms"></i><i style="--bar:23%;--delay:70ms"></i><i style="--bar:43%;--delay:140ms"></i><i style="--bar:65%;--delay:210ms"></i><i style="--bar:88%;--delay:280ms"></i><i style="--bar:100%;--delay:350ms"></i><i style="--bar:91%;--delay:420ms"></i><i style="--bar:73%;--delay:490ms"></i><i style="--bar:48%;--delay:560ms"></i><i style="--bar:29%;--delay:630ms"></i><i style="--bar:17%;--delay:700ms"></i><i style="--bar:9%;--delay:770ms"></i></div><span class="chart-caption mono">Patterns / probability / perspective</span><span class="visual-index">01</span></div><span class="visual-hint">Explore project ↗</span></button><div class="project-meta mono"><span>Quantitative Methods</span><span>Coursework</span></div><h3>From numbers to understanding.</h3><div class="project-bottom"><div class="tags"><span class="tag">Python</span><span class="tag">Statistics</span><span class="tag">JupyterLab</span></div><button class="round-arrow" data-project="quant" aria-label="Open Quantitative Methods project details">↗</button></div></article>
-<article class="project" data-category="course"><button class="project-visual project-open code-visual" data-project="reuse" aria-label="Read about the Efficient Code practical"><div class="terminal" aria-hidden="true"><div class="terminal-top"><i></i><i></i><i></i></div><p><span class="green">from curiosity import questions</span><br><span class="orange">def</span> explore(data):<br>&nbsp;&nbsp;places = read_csv(data)<br>&nbsp;&nbsp;<span class="orange">return</span> a_new_perspective(places)<br><span class="terminal-cursor">▌</span></p></div><span class="visual-hint">Explore project ↗</span></button><div class="project-meta mono"><span>Practical 04</span><span>Efficient code</span></div><h3>Small functions. Bigger possibilities.</h3><div class="project-bottom"><div class="tags"><span class="tag">NumPy</span><span class="tag">CSV</span><span class="tag">Data structures</span></div><button class="round-arrow" data-project="reuse" aria-label="Open Efficient Code project details">↗</button></div></article>
-<article class="project project-wide" data-category="experiment"><button class="project-visual project-open paper-map" data-project="map" aria-label="Read about the interactive spatial sandbox"><svg viewBox="0 0 900 250" aria-hidden="true"><defs><pattern id="pgrid" width="45" height="45" patternUnits="userSpaceOnUse" patternTransform="rotate(-20)"><path d="M0 0H45V45" fill="none" stroke="#40518d" opacity=".2"/></pattern></defs><rect width="900" height="250" fill="url(#pgrid)"/><path d="M-10 150Q120 20 270 148T610 130T910 80" fill="none" stroke="#a99ad9" stroke-width="40"/><g fill="none" stroke="#e53b58"><circle cx="450" cy="130" r="40"/><circle cx="450" cy="130" r="65" opacity=".6"/><circle cx="450" cy="130" r="95" opacity=".3"/></g><g fill="#182b59"><circle cx="120" cy="70" r="5"/><circle cx="220" cy="190" r="5"/><circle cx="640" cy="80" r="5"/><circle cx="775" cy="190" r="5"/></g><path d="M120 70L450 130 640 80M220 190l230-60 325 60" stroke="#182b59" fill="none" stroke-dasharray="4 5"/><circle cx="450" cy="130" r="9" fill="#e53b58" stroke="#fff" stroke-width="3"/></svg><span class="visual-hint">Explore project ↗</span></button><div class="project-meta mono"><span>Browser experiment</span><span>Interactive demo</span></div><h3>One city. More ways to see.</h3><div class="project-bottom"><div class="tags"><span class="tag">Canvas</span><span class="tag">Synthetic data</span><span class="tag">Interactive maps</span></div><a class="round-arrow" href="#lab" aria-label="Try the interactive map">↗</a></div></article></div><p class="sr" id="filterStatus" aria-live="polite">Showing 3 projects.</p></section>
-<section class="section reveal about-section" id="journey"><div class="about-title"><span class="mono">04 / Behind the work</span><h2 class="display-heading">FENG<br><em>QI.</em><span class="about-arrow" aria-hidden="true">↗</span></h2><div class="about-links"><a class="btn magnetic" href="assets/Feng_Qi_Geospatial_CV.pdf" target="_blank" rel="noopener">View my CV ↗</a><a class="textlink" href="mailto:felixpetefeng@gmail.com">Say hello ↗</a></div></div><div class="about-content"><p class="about-statement">I work where<br><em>geography</em> meets<br><em>making.</em></p><p class="about-note">MSc Urban Spatial Science, UCL.<br>GIS, 3D modelling & digital fabrication.</p><div class="timeline">
-<details><summary><span>UCL CASA</span><span class="role-year">2026–27 +</span></summary><p>MSc Urban Spatial Science, currently studying; expected completion September 2027. Building on undergraduate GIS studies at NUIST and exchange coursework at the University of Reading.</p></details>
-<details><summary><span>Nanjing Big Data Group</span><span class="role-year">2025 +</span></summary><p>GIS Data Processing Intern. Cleaned and coordinate-matched healthcare service data, created ArcGIS Pro maps and independently built a public location-search and navigation website.</p></details>
-<details><summary><span>Turenscape · Beijing</span><span class="role-year">2024 +</span></summary><p>GIS Analysis Intern. Land-use analysis and ecological sensitivity mapping for Yueyang’s green-space plan, with project visualisations and presentation materials.</p></details>
-<details><summary><span>Mapping & field research</span><span class="role-year">Explore +</span></summary><p>Terrain and hydrological mapping at Zhongshui Northeast Survey, Design and Research; DBSCAN spatial analysis for Hegang planning research; Lushan fieldwork organising over 100 soil and hydrological records.</p></details>
-</div></div></section>
-<section class="contact reveal" id="contact"><span class="mono">HAVE A PLACE IN MIND?</span><a class="contact-link" href="mailto:felixpetefeng@gmail.com">LET’S<br><em>CONNECT.</em><span aria-hidden="true">↗</span></a><div class="contact-bottom"><span class="mono">felixpetefeng@gmail.com</span><a href="https://github.com/felixpete69" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></section>
-<dialog id="projectDialog" aria-labelledby="dialogTitle"><div class="dialog-top"><span class="mono muted" id="dialogCategory"></span><button id="closeDialog" class="iconbtn" aria-label="Close project details">×</button></div><div class="dialog-accent" aria-hidden="true"></div><h2 id="dialogTitle"></h2><p id="dialogDescription"></p><ul id="dialogDetails"></ul><p class="access-note" id="dialogAccess"></p><a class="btn" id="dialogLink">Explore project ↗</a></dialog><dialog id="imageDialog" aria-labelledby="lightboxTitle"><div class="lightbox-bar"><span id="lightboxTitle"></span><button id="closeImage" class="iconbtn" aria-label="Close image viewer">×</button></div><div class="lightbox-image"><img id="lightboxImage" alt=""></div><div class="lightbox-bottom"><button id="lightboxPrev" class="iconbtn" aria-label="Previous image">←</button><p id="lightboxCaption"></p><button id="lightboxNext" class="iconbtn" aria-label="Next image">→</button></div></dialog></main><div class="wrap"><footer><span>© <span id="year">2026</span> Feng Qi · Spatial design & data</span><span>Terrain to tangible. <a href="#" aria-label="Back to top">↑ Top</a></span></footer></div>
-<script src="assets/vendor/gsap.min.js" defer></script>
-<script src="assets/vendor/ScrollTrigger.min.js" defer></script>
-<script src="app.js" defer></script>
-<script src="motion.js" defer></script>
-</body></html>
+
+<section class="folio-chapter" id="projects" aria-labelledby="project-heading">
+  <div class="folio-bound">
+    <div class="folio-kicker"><span>Coursework and experiments</span><span>UCL CASA</span></div>
+    <div class="folio-heading"><h2 id="project-heading">STUDY<br>NOTES<span>.</span></h2><p>I keep the code alongside the question. These notebooks and browser experiments trace how I work with spatial data.</p></div>
+    <div class="folio-index-tools"><span class="folio-label">Filter by type</span><div class="folio-tabs" role="group" aria-label="Filter projects"><button data-filter="all" aria-pressed="true">All work</button><button data-filter="course" aria-pressed="false">Coursework</button><button data-filter="experiment" aria-pressed="false">Experiments</button></div></div>
+    <div class="folio-project-list">
+      <button class="folio-project" data-category="course" data-project="quant"><span>Course notebook</span><strong>Quantitative Methods</strong><small>Python / Statistics</small><i aria-hidden="true">+</i></button>
+      <button class="folio-project" data-category="course" data-project="reuse"><span>Course notebook</span><strong>Efficient Code</strong><small>NumPy / CSV</small><i aria-hidden="true">+</i></button>
+      <button class="folio-project" data-category="experiment" data-project="map"><span>Browser experiment</span><strong>Spatial Sandbox</strong><small>Canvas / Maps</small><i aria-hidden="true">+</i></button>
+    </div>
+    <p class="sr" id="filterStatus" role="status">Showing 3 projects.</p>
+  </div>
+</section>
+
+<section class="folio-chapter" id="journey" aria-labelledby="profile-heading">
+  <div class="folio-bound">
+    <div class="folio-kicker"><span>Profile</span><span>United Kingdom</span></div>
+    <div class="folio-heading"><h2 id="profile-heading">FENG<br>QI<span>.</span></h2><div><p>I work where geography meets making. I’m studying Urban Spatial Science at UCL CASA, with a background in GIS, 3D modelling and digital fabrication.</p><a class="folio-textlink" href="assets/Feng_Qi_Geospatial_CV.pdf" target="_blank" rel="noopener">Read my CV <small>PDF</small></a></div></div>
+    <div class="folio-methods"><h3>Selected experience</h3><div class="folio-disclosures">
+      <details><summary>UCL CASA <small>2026–27</small></summary><p>MSc Urban Spatial Science, expected September 2027. I came to UCL after undergraduate GIS studies at NUIST and exchange coursework at the University of Reading.</p></details>
+      <details><summary>Nanjing Big Data Group <small>2025</small></summary><p>As a GIS Data Processing Intern, I cleaned and coordinate-matched healthcare service data, made maps in ArcGIS Pro and built a public location-search and navigation website.</p></details>
+      <details><summary>Turenscape, Beijing <small>2024</small></summary><p>As a GIS Analysis Intern, I mapped land use and ecological sensitivity for Yueyang’s green-space plan and prepared the project visualisations and presentation materials.</p></details>
+      <details><summary>Mapping and field research</summary><p>I worked on terrain and hydrological mapping at Zhongshui Northeast Survey, Design and Research, used DBSCAN in Hegang planning research and organised over 100 soil and hydrological records during Lushan fieldwork.</p></details>
+    </div></div>
+  </div>
+</section>
+
+<section class="folio-ledger" id="records" aria-labelledby="records-heading">
+  <div class="folio-bound"><h2 class="folio-label" id="records-heading">Portfolio in numbers</h2>
+    <dl class="folio-stats">
+      <div><dt>Nanjing project images</dt><dd>17</dd></div>
+      <div><dt>Sandbox map layers</dt><dd>3</dd></div>
+      <div><dt>Lushan field records</dt><dd>100<span>+</span></dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="folio-chapter folio-contact" id="contact" aria-labelledby="contact-heading">
+  <div class="folio-bound">
+    <div class="folio-kicker"><span>Contact</span></div>
+    <div class="folio-heading"><h2 id="contact-heading">GET IN<br>TOUCH<span>.</span></h2>
+      <div class="folio-contact-links"><a class="folio-textlink" href="mailto:felixpetefeng@gmail.com">felixpetefeng@gmail.com</a><a class="folio-textlink" href="https://github.com/felixpete69" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+    </div>
+  </div>
+</section>
+
+<dialog id="projectDialog" class="folio-dialog" aria-labelledby="dialogTitle">
+  <div class="folio-dialog-bar"><span class="folio-label" id="dialogCategory"></span><button id="closeDialog" aria-label="Close project details">Close</button></div>
+  <h2 id="dialogTitle"></h2><p id="dialogDescription"></p><ul id="dialogDetails"></ul><p class="folio-access" id="dialogAccess"></p><a class="folio-textlink" id="dialogLink"></a>
+</dialog>
+<dialog id="imageDialog" class="folio-dialog" aria-labelledby="lightboxTitle">
+  <div class="folio-dialog-bar"><span id="lightboxTitle"></span><button id="closeImage" aria-label="Close image viewer">Close</button></div>
+  <div class="lightbox-image"><img id="lightboxImage" alt=""></div>
+  <div class="lightbox-bottom"><button id="lightboxPrev" aria-label="Previous image">Previous</button><p id="lightboxCaption" aria-live="polite" aria-atomic="true"></p><button id="lightboxNext" aria-label="Next image">Next</button></div>
+</dialog>
+
+  </main>
+  <div class="page-width"><footer class="site-footer"><span>© 2026 Feng Qi</span><span>Terrain to Tangible</span><a href="#top">Back to top</a></footer></div>
+</body>
+</html>
